@@ -21,9 +21,13 @@ export default function MediaCard() {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} id="samer">
       <CardActionArea>
-        <CardMedia className={classes.media} image="/static/images/cards/contemplative-reptile.jpg" title="Contemplative Reptile" />
+        <CardMedia
+          className={classes.media}
+          image="https://media.threatpost.com/wp-content/uploads/sites/103/2019/09/26105755/fish-1.jpg"
+          title="Contemplative Reptile"
+        />
         <CardContent>
           <Typography gutterBottom variant="h3" component="h1">
             Lizard
