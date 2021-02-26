@@ -53,10 +53,10 @@ const useStyles = makeStyles({
 export default function MediaCard(props) {
   const classes = useStyles();
   return (
-    <div>
+    <div className="card">
       {props.data.map((el, i) => {
         return (
-          <Card id="card" className={classes.root}>
+          <Card className={classes.root}>
             <CardActionArea>
               <CardMedia className={classes.media} image={el.imageUrl} title="Contemplative Reptile" />
               <CardContent>
@@ -70,10 +70,10 @@ export default function MediaCard(props) {
             </CardActionArea>
             <CardActions>
               <Button size="small" color="primary">
-                Share
+                more dteails
               </Button>
               <Button size="small" color="primary">
-                Learn More
+                order now!
               </Button>
             </CardActions>
           </Card>
