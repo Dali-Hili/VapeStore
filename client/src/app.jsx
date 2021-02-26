@@ -4,7 +4,7 @@ import axios from "axios";
 
 import Product from "./components/product.jsx";
 import Signup from "./components/signUp.jsx";
-
+import Signin from "./components/signIn.jsx";
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -27,6 +27,7 @@ export default class App extends React.Component {
       <div>
           <Product data={this.state.data} />
           <Signup/>
+          <Signin/>
       </div>
     );
   }
