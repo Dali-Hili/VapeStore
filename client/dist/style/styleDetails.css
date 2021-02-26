@@ -1,27 +1,6 @@
-.product {
-  width: 90vw;
-  height: 90vh;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.card {
-  height: 100px;
-  width: 75px;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-.img {
-  height: 90px;
-  width: 90px;
-}
-
 /* SignUp */
 
-#basic{
+#basic {
   display: grid;
   margin-left: 43%;
   margin-top: 4em;
@@ -32,21 +11,24 @@
 #firstName {
   font-size: 12px;
 }
-#firstName-label{
+#firstName-label {
   font-size: 13px;
 }
 #email {
   font-size: 12px;
 }
-#email-label{
+#email-label {
   font-size: 12px;
 }
-#password{
+#password {
   font-size: 12px;
 }
-#password-label{
+#password-label {
   font-size: 12px;
 }
-#signin{
-  font-size: 12px;
+/* signIn */
+#singin {
+  display: grid;
+  margin-top: 8em;
+  margin-left: 40%;
 }

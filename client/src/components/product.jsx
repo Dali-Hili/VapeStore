@@ -52,29 +52,33 @@ const useStyles = makeStyles({
 
 export default function MediaCard(props) {
   const classes = useStyles();
-  const vapes = props.data;
-  console.log(vapes);
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia className={classes.media} image="/static/images/cards/contemplative-reptile.jpg" title="Contemplative Reptile" />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {vapes.title}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
+    <div>
+      {props.data.map((el, i) => {
+        return (
+          <Card id="card" className={classes.root}>
+            <CardActionArea>
+              <CardMedia className={classes.media} image={el.imageUrl} title="Contemplative Reptile" />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {el.title}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {el.description}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Button size="small" color="primary">
+                Share
+              </Button>
+              <Button size="small" color="primary">
+                Learn More
+              </Button>
+            </CardActions>
+          </Card>
+        );
+      })}
+    </div>
   );
 }
