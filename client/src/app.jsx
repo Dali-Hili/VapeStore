@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 
 import Product from "./components/product.jsx";
+import Signup from "./components/signUp.jsx";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -24,9 +25,8 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>
-          <Product data={this.state.data} />{" "}
-        </h1>
+          <Product data={this.state.data} />
+          <Signup/>
       </div>
     );
   }
