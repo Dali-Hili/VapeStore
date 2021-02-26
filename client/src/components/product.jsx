@@ -54,8 +54,21 @@ export default function MediaCard(props) {
   const classes = useStyles();
   return (
     <div>
+{/* <AppBar position="static">
+      <Toolbar>
+        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          
+        </IconButton>
+        <Typography variant="h4" className={classes.title}>
+          Vapers Store
+        </Typography>
+        <Button color="inherit">Login</Button>
+        <Button color="inherit">Sign Up</Button>
+      </Toolbar>
+    </AppBar> */}
+
       {props.data.map((el, i) => {
-        return (
+        return (<div key={i}>
           <Card id="card" className={classes.root}>
             <CardActionArea>
               <CardMedia className={classes.media} image={el.imageUrl} title="Contemplative Reptile" />
@@ -76,7 +89,7 @@ export default function MediaCard(props) {
                 Learn More
               </Button>
             </CardActions>
-          </Card>
+          </Card></div>
         );
       })}
     </div>

@@ -25,7 +25,8 @@ module.exports.createOne = async (req, res) => {
   }
 };
 module.exports.findUser= async (req, res)=>{
-  const user = UserModel.findOne({name: req.body.name})
+  const user = await UserModel.findOne({name: req.body.name})
+  console.log(user)
   if(!user){
       res.send('user not found')
   }
