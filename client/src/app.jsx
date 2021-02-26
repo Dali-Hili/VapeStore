@@ -25,9 +25,8 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-          <Product data={this.state.data} />
-          <Signup/>
-          <Signin/>
+        <Product data={this.state.data} />
+        {/* <Signup/> */}
       </div>
     );
   }
