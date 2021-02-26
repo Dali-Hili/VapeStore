@@ -47,6 +47,9 @@
 #password-label{
   font-size: 12px;
 }
-#signin{
-  font-size: 12px;
+/* signIn */
+#singin{
+  display: grid;
+  margin-top: 8em;
+  margin-left: 40%;
 }

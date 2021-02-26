@@ -4,5 +4,6 @@ const Controller = require("./controllers.js");
 
 router.get("/products", Controller.findAll);
 router.post('/create', Controller.createOne);
+router.post('/login', Controller.findUser)
 
 module.exports = router;
