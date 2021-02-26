@@ -1,50 +1,27 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 140,
-  },
-});
-
-export default function MediaCard() {
-  const classes = useStyles();
-
-  return (
-    <Card className={classes.root} id="samer">
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="https://media.threatpost.com/wp-content/uploads/sites/103/2019/09/26105755/fish-1.jpg"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h3" component="h1">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
-  );
+export default class product extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div className="product">
+        {this.props.data.map((prod, key) => {
+          return (
+            <div className="card" key={key}>
+              <div className="img">
+                <img src={prod.imageUrl} alt="" />
+              </div>
+              <div className="title">{prod.title}</div>
+              <div className="desc">{prod.description}</div>
+              <div className="btn">
+                <button>order</button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
 }
