@@ -1,11 +1,9 @@
 // import React from "react";
-
 // export default class Product extends React.Component {
 //   constructor(props) {
 //     super(props);
 //     this.state = {};
 //   }
-
 //   render() {
 //     return (
 //       <div className="test">
@@ -29,7 +27,6 @@
 //     );
 //   }
 // }
-
 //
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
@@ -40,7 +37,6 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -49,27 +45,13 @@ const useStyles = makeStyles({
     height: 140,
   },
 });
-
 export default function MediaCard(props) {
   const classes = useStyles();
   return (
-    <div>
-{/* <AppBar position="static">
-      <Toolbar>
-        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-          
-        </IconButton>
-        <Typography variant="h4" className={classes.title}>
-          Vapers Store
-        </Typography>
-        <Button color="inherit">Login</Button>
-        <Button color="inherit">Sign Up</Button>
-      </Toolbar>
-    </AppBar> */}
-
+    <div className="card">
       {props.data.map((el, i) => {
         return (
-          <Card id="card" className={classes.root}>
+          <Card className={classes.root}>
             <CardActionArea>
               <CardMedia className={classes.media} image={el.imageUrl} title="Contemplative Reptile" />
               <CardContent>
@@ -83,10 +65,10 @@ export default function MediaCard(props) {
             </CardActionArea>
             <CardActions>
               <Button size="small" color="primary">
-                Share
+                more dteails
               </Button>
               <Button size="small" color="primary">
-                Learn More
+                order now!
               </Button>
             </CardActions>
           </Card>
