@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+export default function SignUp(props) {
   const classes = useStyles();
   const [state, setState] = useState({
     name: "",
@@ -80,25 +80,14 @@ const handleSubmit = (e) => {
     }
     axios.post('/api/vapestore/create',userToAdd)
     .then((response)=>{
-        console.log(response)
+        alert(response.data)
     }).catch((error)=>{
         console.log(error)
     })
 }
   return (
     <div>
-    <AppBar position="static">
-      <Toolbar>
-        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-          
-        </IconButton>
-        <Typography variant="h4" className={classes.title}>
-          Vapers Store
-        </Typography>
-        <Button color="inherit">Login</Button>
-        <Button color="inherit">Sign Up</Button>
-      </Toolbar>
-    </AppBar>
+
   
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -162,7 +151,7 @@ const handleSubmit = (e) => {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link variant="body2" id='signin'>
+              <Link variant="body2" id='signin'onClick={() =>props.changeView("signin")}>
                 Already have an account? Sign in
               </Link>
             </Grid>

@@ -1,15 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-
 import Product from "./components/product.jsx";
 import Signup from "./components/signUp.jsx";
 import Signin from "./components/signIn.jsx";
+import NavBar from "./components/navBar.jsx";
+
+
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
+      view: "details"
     };
   }
   componentDidMount() {
@@ -22,11 +26,29 @@ export default class App extends React.Component {
     });
   }
 
+  changeView(view) {
+    this.setState({ 
+      view: view,
+    })
+  }
+  
+
+  renderView() {
+    const { view } = this.state;
+    if(view === "details"){
+      return <Product data={this.state.data} /> 
+    } if (view === "signup"){
+      return  <Signup changeView={(data)=>this.changeView(data)}/>
+    }if(view === "signin"){
+      return <Signin  changeView={(data)=>this.changeView(data)}/>
+    }
+  }
+
   render() {
     return (
       <div>
-        <Product data={this.state.data} />
-        {/* <Signup/> */}
+ < NavBar changeView={(data)=>this.changeView(data)}/>
+<div>{this.renderView()}</div>
       </div>
     );
   }

@@ -13,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import  IconButton from '@material-ui/core/IconButton';
 import axios from 'axios';
+import Product from "./product.jsx"
 
 
 function Copyright() {
@@ -48,27 +49,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function SignIn(props) {
   const classes = useStyles();
   
 const [state,  setState] =useState({
-name:"",
+email:"",
 password:"",
 })
 const handelChange = function (event) {
   const {name,value}=event.target
   setState(prevState =>({...prevState,[name]:value}))
-
 }
+
 const handleClick= function(){
-axios.get("/api/vapestore/login",(req,res)=>({name: req.body.name, password: req.body.password})).then(response => {
-  console.log(response)
-}).catch(err => {
-  console.log(err)
-})
+var obj = {email : state.email , password : state.password}
+// console.log(state.name , state.password)
+axios.post("/api/vapeStore/login" , obj).then((res)=>{
+    // alert(res.data)
+    if (res.data==="success"){
+      return props.changeView("details")
+    }else{
+      alert(res.data)
+    }
+}).catch((err)=>{ console.log(err)})
+
 }
 
   return ( 
+    
       <div>
         
     <Container component="main" maxWidth="xs">
@@ -87,9 +95,9 @@ axios.get("/api/vapestore/login",(req,res)=>({name: req.body.name, password: req
             required
             fullWidth
             id="email"
-            label="Username"
-            name="name"
-            autoComplete="name"
+            label="email"
+            name="email"
+            autoComplete="email"
             autoFocus
             onChange={(e)=>handelChange(e)}
           />
@@ -107,7 +115,6 @@ axios.get("/api/vapestore/login",(req,res)=>({name: req.body.name, password: req
           />
          
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
@@ -119,7 +126,7 @@ axios.get("/api/vapestore/login",(req,res)=>({name: req.body.name, password: req
           <Grid container>
           
             <Grid item>
-              <Link variant="body2">
+              <Link variant="body2" onClick={() =>props.changeView("signup")}>
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
