@@ -45,10 +45,10 @@ export default class App extends React.Component {
       return <Product data={this.state.data} changeView={(view,product) => this.changeView(view,product) } />;
     }
     if (view === "signup") {
-      return <Signup changeView={(view) => this.changeView(view,product)} />;
+      return <Signup changeView={(view) => this.changeView(view)} />;
     }
     if (view === "signin") {
-      return <Signin changeView={(view) => this.changeView(view,product)} />;
+      return <Signin changeView={(view) => this.changeView(view)} />;
     }
     if (view === "pro") {
       return <Pro changeView={(view,product) => this.changeView(view,product)} />;
