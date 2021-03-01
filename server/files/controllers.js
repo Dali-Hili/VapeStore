@@ -4,14 +4,7 @@ const ProductModel = require("../database/productModel.js");
 const bcrypt = require("bcrypt");
 const { signupValidation, loginValidation } = require("../auth");
 const jwt = require("jsonwebtoken");
-module.exports.findAll = async function (req, res) {
-  try {
-    let products = await ProductModel.find({});
-    res.send(products);
-  } catch (error) {
-    res.send(error);
-  }
-};
+
 
 module.exports.findAllusers = async function (req, res) {
   try {
@@ -72,5 +65,43 @@ module.exports.findUser = async (req, res) => {
     } catch (err) {
       res.send(err);
     }
+  }
+};
+// crud for admin 
+module.exports.findAll = async function (req, res) {
+  try {
+    let products = await ProductModel.find({});
+    res.send(products);
+  } catch (error) {
+    res.send(error);
+  }
+};
+
+module.exports.addprod= async function (req, res) {
+  try {
+    let product = await ProductModel.create(req.body);
+    res.send(product);
+  } catch (err) {
+    res.send(err);
+  }
+};
+
+module.exports.deleteOne = async function (req, res) {
+  try {
+    let product = await ProductModel.findOneAndRemove({ _id: req.params._id });
+    res.send(product);
+  } catch (err) {
+    res.send(err);
+  }
+};
+module.exports.updateprod = async function (req, res) {
+  try {
+    let product = await ProductModel.findOneAndUpdate(
+      { _id: req.params._id },
+      
+    );
+    res.send(product);
+  } catch (err) {
+    res.send(err);
   }
 };
