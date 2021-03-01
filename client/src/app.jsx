@@ -5,7 +5,7 @@ import Product from "./components/product.jsx";
 import Signup from "./components/signUp.jsx";
 import Signin from "./components/signIn.jsx";
 import NavBar from "./components/navBar.jsx";
-
+import Pro from "./components/pro.jsx";
 
 
 export default class App extends React.Component {
@@ -17,6 +17,9 @@ export default class App extends React.Component {
     };
   }
   componentDidMount() {
+    if(localStorage.getItem("token")){
+      this.setState({view : "pro"})
+    }
     this.fetchData();
   }
 
@@ -41,6 +44,9 @@ export default class App extends React.Component {
       return  <Signup changeView={(data)=>this.changeView(data)}/>
     }if(view === "signin"){
       return <Signin  changeView={(data)=>this.changeView(data)}/>
+    }
+    if(view === "pro"){
+      return <Pro  changeView={(data)=>this.changeView(data)}/>
     }
   }
 

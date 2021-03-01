@@ -65,11 +65,12 @@ const handleClick= function(){
 var obj = {email : state.email , password : state.password}
 // console.log(state.name , state.password)
 axios.post("/api/vapeStore/login" , obj).then((res)=>{
-    // alert(res.data)
-    if (res.data==="success"){
-      return props.changeView("details")
+    console.log(res.data);
+    if (res.data.mesaage ==="success"){
+      localStorage.setItem("token" ,res.data.token )
+    return props.changeView("pro")
     }else{
-      alert(res.data)
+      alert(res.data.message)
     }
 }).catch((err)=>{ console.log(err)})
 

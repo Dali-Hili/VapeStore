@@ -39,6 +39,7 @@ export default function MediaCard(props) {
     <div className="card">
       {props.data.map((el, i) => {
         return (
+          <div key = {i}>
           <Card className={classes.root}>
             <CardActionArea>
               <CardMedia className={classes.media} image={el.imageUrl} id="prodImage" title="Contemplative Reptile" />
@@ -59,7 +60,7 @@ export default function MediaCard(props) {
                 order now!
               </Button>
             </CardActions>
-          </Card>
+          </Card></div>
         );
       })}
     </div>
