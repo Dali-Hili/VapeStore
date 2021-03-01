@@ -4,10 +4,13 @@ import axios from "axios";
 import Product from "./components/product.jsx";
 import Signup from "./components/signUp.jsx";
 import Signin from "./components/signIn.jsx";
-import NavBar from "./components/navBar.jsx";
+import NavBar from "./navbar/navBar.jsx";
 import Pro from "./components/pro.jsx";
 import Admin from "./adminside/index.jsx";
 import Prodetail from "./components/details.jsx";
+import Navsignup from "./navbar/navsignup.jsx";
+import Navsignin from "./navbar/navsignin.jsx";
+import Navbarprod from './navbar/navbarprod.jsx';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -42,22 +45,22 @@ export default class App extends React.Component {
   renderView() {
     const { view } = this.state;
     if (view === "details") {
-      return <Product data={this.state.data} changeView={(view,product) => this.changeView(view,product) } />;
+      return <div><NavBar changeView={(data) => this.changeView(data)} /> <Product data={this.state.data} changeView={(view,product) => this.changeView(view,product) } /></div>;
     }
     if (view === "signup") {
-      return <Signup changeView={(view) => this.changeView(view)} />;
+      return <div> <Navsignup changeView={(data) => this.changeView(data)}/><Signup changeView={(view) => this.changeView(view)} /></div>;
     }
     if (view === "signin") {
-      return <Signin changeView={(view) => this.changeView(view)} />;
+      return <div><Navsignin changeView={(data) => this.changeView(data)}/><Signin changeView={(view) => this.changeView(view)} /></div>;
     }
     if (view === "pro") {
-      return <Pro changeView={(view,product) => this.changeView(view,product)} />;
+      return <div> <Navbarprod/> <Pro data={this.state.data} changeView={(view,product) => this.changeView(view,product)} /></div>;
     }
     if (view === "admin") {
-      return <Admin changeView={(view,product) => this.changeView(view,product)} />;
+      return <div><Admin changeView={(view,product) => this.changeView(view,product)} /></div>;
     }
     if (view === "Prodetail") {
-      return <Prodetail changeView={(view,product) => this.changeView(view,product) } product={this.state.product} />;
+      return <div><NavBar changeView={(data) => this.changeView(data)}/><Prodetail changeView={(view,product) => this.changeView(view,product) } product={this.state.product} /></div>;
     }
   }
 
@@ -66,7 +69,7 @@ export default class App extends React.Component {
       if (this.state.view !== "admin") {
         return (
           <div>
-            <NavBar changeView={(data) => this.changeView(data)} />
+            
             <div>{this.renderView()}</div>
           </div>
         );
