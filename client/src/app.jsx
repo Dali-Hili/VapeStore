@@ -7,14 +7,14 @@ import Signin from "./components/signIn.jsx";
 import NavBar from "./components/navBar.jsx";
 import Pro from "./components/pro.jsx";
 import Admin from "./adminside/index.jsx";
-
+import Prodetail from "./components/details.jsx";
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
       view: "details",
-      product:null
+      product:null,
     };
   }
   componentDidMount() {
@@ -35,26 +35,29 @@ export default class App extends React.Component {
   changeView(view,product) {
     this.setState({
       view: view,
-      product:product
+      product: product
     });
   }
 
   renderView() {
     const { view } = this.state;
     if (view === "details") {
-      return <Product data={this.state.data} changeView={(view,product) => this.changeView(view,product)}  />;
+      return <Product data={this.state.data} changeView={(view,product) => this.changeView(view,product) } />;
     }
     if (view === "signup") {
-      return <Signup changeView={(data,product) => this.changeView(data,product)} />;
+      return <Signup changeView={(view) => this.changeView(view,product)} />;
     }
     if (view === "signin") {
-      return <Signin changeView={(data,product) => this.changeView(data,product)} />;
+      return <Signin changeView={(view) => this.changeView(view,product)} />;
     }
     if (view === "pro") {
-      return <Pro changeView={(data,product) => this.changeView(data,product)} />;
+      return <Pro changeView={(view,product) => this.changeView(view,product)} />;
     }
     if (view === "admin") {
-      return <Admin changeView={(data,product) => this.changeView(data,product)} />;
+      return <Admin changeView={(view,product) => this.changeView(view,product)} />;
+    }
+    if (view === "Prodetail") {
+      return <Prodetail changeView={(view,product) => this.changeView(view,product) } product={this.state.product} />;
     }
   }
 
