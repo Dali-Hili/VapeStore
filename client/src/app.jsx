@@ -6,19 +6,21 @@ import Signup from "./components/signUp.jsx";
 import Signin from "./components/signIn.jsx";
 import NavBar from "./components/navBar.jsx";
 import Pro from "./components/pro.jsx";
-
+import Admin from "./adminside/index.jsx";
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
-      view: "details"
+      view: "details",
     };
   }
   componentDidMount() {
-    if(localStorage.getItem("token")){
-      this.setState({view : "pro"})
+    if (localStorage.getItem("token") && localStorage.getItem("token") !== "admin") {
+      this.setState({ view: "pro" });
+    } else if (localStorage.getItem("token") === "admin"){
+      this.setState({ view: "admin" });
     }
     this.fetchData();
   }
@@ -30,31 +32,45 @@ export default class App extends React.Component {
   }
 
   changeView(view) {
-    this.setState({ 
+    this.setState({
       view: view,
-    })
+    });
   }
-  
 
   renderView() {
     const { view } = this.state;
-    if(view === "details"){
-      return <Product data={this.state.data} /> 
-    } if (view === "signup"){
-      return  <Signup changeView={(data)=>this.changeView(data)}/>
-    }if(view === "signin"){
-      return <Signin  changeView={(data)=>this.changeView(data)}/>
+    if (view === "details") {
+      return <Product data={this.state.data} />;
     }
-    if(view === "pro"){
-      return <Pro  changeView={(data)=>this.changeView(data)}/>
+    if (view === "signup") {
+      return <Signup changeView={(data) => this.changeView(data)} />;
+    }
+    if (view === "signin") {
+      return <Signin changeView={(data) => this.changeView(data)} />;
+    }
+    if (view === "pro") {
+      return <Pro changeView={(data) => this.changeView(data)} />;
+    }
+    if (view === "admin") {
+      return <Admin changeView={(data) => this.changeView(data)} />;
     }
   }
 
   render() {
+    {
+      if (this.state.view !== "admin") {
+        return (
+          <div>
+            <NavBar changeView={(data) => this.changeView(data)} />
+            <div>{this.renderView()}</div>
+          </div>
+        );
+      }
+    }
     return (
       <div>
- < NavBar changeView={(data)=>this.changeView(data)}/>
-<div>{this.renderView()}</div>
+        
+        <div>{this.renderView()}</div>
       </div>
     );
   }
