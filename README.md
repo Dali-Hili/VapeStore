@@ -1,2 +1,2 @@
-# VapeStore
-This is a website for selling vapes 
+# vapeStore
+this is a platform to sell vapes online
