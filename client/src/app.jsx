@@ -14,6 +14,7 @@ export default class App extends React.Component {
     this.state = {
       data: [],
       view: "details",
+      product:null
     };
   }
   componentDidMount() {
@@ -31,28 +32,29 @@ export default class App extends React.Component {
     });
   }
 
-  changeView(view) {
+  changeView(view,product) {
     this.setState({
       view: view,
+      product:product
     });
   }
 
   renderView() {
     const { view } = this.state;
     if (view === "details") {
-      return <Product data={this.state.data} />;
+      return <Product data={this.state.data} changeView={(view,product) => this.changeView(view,product)}  />;
     }
     if (view === "signup") {
-      return <Signup changeView={(data) => this.changeView(data)} />;
+      return <Signup changeView={(data,product) => this.changeView(data,product)} />;
     }
     if (view === "signin") {
-      return <Signin changeView={(data) => this.changeView(data)} />;
+      return <Signin changeView={(data,product) => this.changeView(data,product)} />;
     }
     if (view === "pro") {
-      return <Pro changeView={(data) => this.changeView(data)} />;
+      return <Pro changeView={(data,product) => this.changeView(data,product)} />;
     }
     if (view === "admin") {
-      return <Admin changeView={(data) => this.changeView(data)} />;
+      return <Admin changeView={(data,product) => this.changeView(data,product)} />;
     }
   }
 

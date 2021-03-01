@@ -37,23 +37,23 @@ export default function MediaCard(props) {
   const classes = useStyles();
   return (
     <div className="card">
-      {props.data.map((el, i) => {
+      {props.data.map((product, i) => {
         return (
           <div key = {i}>
           <Card className={classes.root}>
             <CardActionArea>
-              <CardMedia className={classes.media} image={el.imageUrl} id="prodImage" title="Contemplative Reptile" />
+              <CardMedia className={classes.media} image={product.imageUrl} id="prodImage" title="Contemplative Reptile" />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                  {el.title}
+                  {product.title}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  {el.description}
+                  {product.description}
                 </Typography>
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary">
+              <Button size="small" color="primary" onClick={()=>props.changeView("pro",product)}>
                 more details
               </Button>
               <Button size="small" color="primary">
