@@ -108,7 +108,7 @@ export default function PersistentDrawerLeft(props) {
     window.location.reload()
 }
   return (
-    <div className={classes.root}>
+    <div className={classes.root} className="admincard">
       {props.data.map((product, i) => {
         return (
           <div key={i}>
@@ -130,7 +130,7 @@ export default function PersistentDrawerLeft(props) {
                 <Typography variant="h6" noWrap>
                   Vape Store 
                 </Typography>
-               <Button color="inherit" onClick={()=>logout()}>Logout</Button>
+          <Button className="logoutbtn"color="inherit" onClick={()=>logout()} >Logout</Button>
               </Toolbar>
             </AppBar>
 
@@ -196,19 +196,19 @@ export default function PersistentDrawerLeft(props) {
                       {product.description}
                     </Typography>
                   </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button
+               <div> <CardActions>
+                <Button
                     size="small"
                     color="primary"
-                    onClick={() => props.changeView("Prodetail", product)}
+                    
                   >
-                    delete
+                   delete
                   </Button>
                   <Button size="small" color="primary">
                     update
-                  </Button>
-                </CardActions>
+                  </Button> 
+                </CardActions></div> 
+                </CardActionArea>
               </Card>
             </main>
           </div>
