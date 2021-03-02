@@ -130,7 +130,7 @@ export default function PersistentDrawerLeft(props) {
                 <Typography variant="h6" noWrap>
                   Vape Store 
                 </Typography>
-          <Button color="inherit" onClick={()=>logout()}>Logout</Button>
+               <Button color="inherit" onClick={()=>logout()}>Logout</Button>
               </Toolbar>
             </AppBar>
 
