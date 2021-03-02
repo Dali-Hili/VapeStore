@@ -9,7 +9,7 @@ router.post('/login', Controller.findUser)
 //ADMIN
 router.get("/products", Controller.findAll);
 router.post('/add', Controller.addprod)
-router.delete('/delete/id', Controller.deleteOne)
-router.put('/update/:id', Controller.update)
+router.delete('/delete/:id', Controller.deleteOne)
+router.put('/update/:id', Controller.updateprod)
 
 module.exports = router;

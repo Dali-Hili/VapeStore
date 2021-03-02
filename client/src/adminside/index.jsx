@@ -9,6 +9,7 @@ export default class Admin extends Component {
       data: [],
       view: "details",
       product: null,
+      update: {imageUrl: "",title: "",stock: "",description: ""}
     };
   }
   componentDidMount() {
@@ -33,6 +34,13 @@ export default class Admin extends Component {
       product: product,
     });
   }
+  getdata(data){
+    this.setState({ updatedata: data });
+  }
+  handleChange(e){
+    
+  }
+ 
   renderView() {
     const { view } = this.state;
     

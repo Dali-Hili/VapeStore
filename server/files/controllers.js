@@ -88,7 +88,8 @@ module.exports.addprod= async function (req, res) {
 
 module.exports.deleteOne = async function (req, res) {
   try {
-    let product = await ProductModel.findOneAndRemove({ _id: req.params._id });
+    let product = await ProductModel.delete({ _id: req.params.id });
+    console.log(req.params.id )
     res.send(product);
   } catch (err) {
     res.send(err);
@@ -96,7 +97,7 @@ module.exports.deleteOne = async function (req, res) {
 };
 module.exports.updateprod = async function (req, res) {
   try {
-    let product = await ProductModel.findOne({where :{ _id: req.params._id }})
+    let product = await ProductModel.findOne({ _id: req.params.id })
     let update = await product.update({ imageUrl: req.body.imageUrl, title: req.body.title, stock: req.body.stock, description: req.body.description}) 
     res.send(update);
   } catch (err) {
