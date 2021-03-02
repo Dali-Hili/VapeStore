@@ -11,6 +11,7 @@ export default class Admin extends Component {
       product: null,
       update: {imageUrl: "",title: "",stock: "",description: ""}
     };
+    this.handelDelete=this.handelDelete.bind(this)
   }
   componentDidMount() {
     if (
@@ -32,11 +33,13 @@ export default class Admin extends Component {
     this.setState({
       view: view,
       product: product,
+     
     });
   }
   handelDelete(id) {
+    console.log(id);
     axios
-      .delete(`/api/vapeStore/${id}`)
+      .delete(`/api/vapeStore/delete/${id}`)
       .then((result) => {
         console.log(result);
       })
@@ -59,7 +62,7 @@ export default class Admin extends Component {
         
           <Adminprod
             data={this.state.data}
-            changeView={(view, product) => this.changeView(view, product) } handelDelete={(element)=>this.handelDelete(element.id)}
+            changeView={(view, product) => this.changeView(view, product) }
           />
         </div>
       );

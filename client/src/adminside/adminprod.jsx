@@ -1,4 +1,4 @@
-import React,{ useState } from "react";
+import React from "react";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -23,6 +23,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
+import axios from "axios";
 
 const drawerWidth = 240;
 
@@ -99,7 +100,7 @@ export default function PersistentDrawerLeft(props) {
   const handleDrawerOpen = () => {
     setOpen(true);
   };
-  
+
   const handleDrawerClose = () => {
     setOpen(false);
   };
@@ -108,113 +109,128 @@ export default function PersistentDrawerLeft(props) {
     window.location.reload()
 }
 
-  return (
-    <div className={classes.root} className="admincard">
-      {props.data.map((product, i) => {
-        return (
-          <div key={i}>
-            <CssBaseline />
-            <AppBar
-              position="fixed"
-              className={clsx(classes.appBar, {
-                [classes.appBarShift]: open,
-              })}
-            >
-              <Toolbar>
-                <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  onClick={handleDrawerOpen}
-                  edge="start"
-                  className={clsx(classes.menuButton, open && classes.hide)}
-                ></IconButton>
-                <Typography variant="h6" noWrap>
-                  Vape Store 
-                </Typography>
-          <Button className="logoutbtn"color="inherit" onClick={()=>logout()} >Logout</Button>
-              </Toolbar>
-            </AppBar>
 
-            <Drawer
-              className={classes.drawer}
-              variant="persistent"
-              anchor="left"
-              open={open}
-              classes={{
-                paper: classes.drawerPaper,
-              }}
+const   handelDelete = (product)=> {
+  console.log("azdadzadzadzadz" , product._id);
+  axios
+    .delete(`/api/vapeStore/delete/${product._id}`)
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+  return (  <div className={classes.root} className="admincard">
+  {props.data.map((product, i) => {
+    return (
+      <div key={i}>
+        <CssBaseline />
+        <AppBar
+          position="fixed"
+          className={clsx(classes.appBar, {
+            [classes.appBarShift]: open,
+          })}
+        >
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              className={clsx(classes.menuButton, open && classes.hide)}
+            ></IconButton>
+            <Typography variant="h6" noWrap>
+              Vape Store
+            </Typography>
+            <Button
+              className="logoutbtn"
+              color="inherit"
+              onClick={() => logout()}
             >
-              <div className={classes.drawerHeader}>
-                <IconButton onClick={handleDrawerClose}>
-                  {theme.direction}
-                </IconButton>
-              </div>
-              <Divider />
-              <List>
-                {["Inbox", "Starred", "Send email", "Drafts"].map(
-                  (text, index) => (
-                    <ListItem button key={text}>
-                      <ListItemIcon>{index}</ListItemIcon>
-                      <ListItemText primary={text} />
-                    </ListItem>
-                  )
-                )}
-              </List>
-              <Divider />
-              <List>
-                {["All mail", "Trash", "Spam"].map((text, index) => (
-                  <ListItem button key={text}>
-                    <ListItemIcon>{index}</ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItem>
-                ))}
-              </List>
-            </Drawer>
-            <main
-              className={clsx(classes.content, {
-                [classes.contentShift]: open,
-              })}
-            >
-              <div className={classes.drawerHeader} />
-              <div className={classes.toolbar} />
-              <Card className={classes.root}>
-                <CardActionArea>
-                  <CardMedia
-                    className={classes.media}
-                    image={product.imageUrl}
-                    id="prodImage"
-                    title="Contemplative Reptile"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {product.title}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      {product.description}
-                    </Typography>
-                  <Button
-                    size="small"
-                    color="primary"
-                    onClick={(product)=>{props.handelDelete(product.id)}}
-                  >
-                   delete
-                  </Button>
-                  <Button size="small" color="primary">
-                    update
-                  </Button>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                </CardActions>
-              </Card>
-            </main>
+              Logout
+            </Button>
+          </Toolbar>
+        </AppBar>
+
+        <Drawer
+          className={classes.drawer}
+          variant="persistent"
+          anchor="left"
+          open={open}
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+        >
+          <div className={classes.drawerHeader}>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction}
+            </IconButton>
           </div>
-        );
-      })}
-    </div>
-  );
+          <Divider />
+          <List>
+            {["Inbox", "Starred", "Send email", "Drafts"].map(
+              (text, index) => (
+                <ListItem button key={text}>
+                  <ListItemIcon>{index}</ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              )
+            )}
+          </List>
+          <Divider />
+          <List>
+            {["All mail", "Trash", "Spam"].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>{index}</ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+        </Drawer>
+        <main
+          className={clsx(classes.content, {
+            [classes.contentShift]: open,
+          })}
+        >
+          <div className={classes.drawerHeader} />
+          <div className={classes.toolbar} />
+          <Card className={classes.root}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image={product.imageUrl}
+                id="prodImage"
+                title="Contemplative Reptile"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {product.title}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="p"
+                >
+                  {product.description}
+                </Typography>
+                <Button
+                  size="small"
+                  color="primary"
+                  onClick={()=>{handelDelete(product)}}
+                >
+                  delete
+                </Button>
+                <Button size="small" color="primary">
+                  update
+                </Button>
+              </CardContent>
+            </CardActionArea>
+            <CardActions></CardActions>
+          </Card>
+        </main>
+      </div>
+    );
+  })}
+</div>)
 }
