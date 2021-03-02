@@ -7,11 +7,12 @@ export default class Admin extends Component {
     super(props);
     this.state = {
       data: [],
-      view: "details",
+      view: "",
       product: null,
       update: {imageUrl: "",title: "",stock: "",description: ""}
     };
-    this.handelDelete=this.handelDelete.bind(this)
+    this.handelDelete=this.handelDelete.bind(this);
+    this.changeView=this.changeView.bind(this)
   }
   componentDidMount() {
     if (
@@ -55,8 +56,8 @@ export default class Admin extends Component {
   }
  
   renderView() {
-    const { view } = this.state;
-    
+    const { view } = this.state.view
+    if(view === "admin"){
       return (
         <div>
         
@@ -66,7 +67,7 @@ export default class Admin extends Component {
           />
         </div>
       );
-    
+    }
   }
   
   render() {
