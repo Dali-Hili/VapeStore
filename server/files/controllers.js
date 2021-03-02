@@ -5,10 +5,9 @@ const bcrypt = require("bcrypt");
 const { signupValidation, loginValidation } = require("../auth");
 const jwt = require("jsonwebtoken");
 
-
 module.exports.findAllusers = async function (req, res) {
   try {
-    let products = await UserModel.find({});
+    const products = await UserModel.find({});
     res.send(products);
   } catch (error) {
     res.send(error);
@@ -40,11 +39,10 @@ module.exports.createOne = async (req, res) => {
 module.exports.findUser = async (req, res) => {
   // VALIDATE THE DATA
   if (req.body.email === "admin" && req.body.password === "admin") {
-    res.send("admin")
-    const token = jwt.sign({_id:00},"fghfghrtfjyuuikyufiy")
-    res.header("auth-token",token)
-      res.send({mesaage : "admin" , token : token})
-    
+    res.send("admin");
+    const token = jwt.sign({ _id: 00 }, "fghfghrtfjyuuikyufiy");
+    res.header("auth-token", token);
+    res.send({ mesaage: "admin", token: token });
   } else {
     const { error } = loginValidation(req.body);
     if (error) return res.send(error.details[0].message);
@@ -67,19 +65,19 @@ module.exports.findUser = async (req, res) => {
     }
   }
 };
-// crud for admin 
+// crud for admin
 module.exports.findAll = async function (req, res) {
   try {
-    let products = await ProductModel.find({});
+    const products = await ProductModel.find({});
     res.send(products);
   } catch (error) {
     res.send(error);
   }
 };
 
-module.exports.addprod= async function (req, res) {
+module.exports.addprod = async function (req, res) {
   try {
-    let product = await ProductModel.create(req.body);
+    const product = await ProductModel.create(req.body);
     res.send(product);
   } catch (err) {
     res.send(err);
@@ -88,14 +86,21 @@ module.exports.addprod= async function (req, res) {
 
 module.exports.deleteOne = async function (req, res) {
   try {
-    let product = await ProductModel.delete({ _id: req.params.id });
-    console.log(req.params.id )
+    const product = await ProductModel.findByIdAndDelete({
+      _id: req.params.id,
+    });
     res.send(product);
   } catch (err) {
     res.send(err);
   }
 };
 module.exports.updateprod = async function (req, res) {
+  const prod = {
+    imageUrl: req.body.imageUrl,
+    title: req.body.title,
+    stock: req.body.stock,
+    description: req.body.description,
+  };
   try {
     let product = await ProductModel.findOne({ _id: req.params.id })
     let update = await product.update({ imageUrl: req.body.imageUrl, title: req.body.title, stock: req.body.stock, description: req.body.description}) 
@@ -105,15 +110,21 @@ module.exports.updateprod = async function (req, res) {
   }
 };
 
-module.exports.update = async (req,res) => {
-  try{
-    const update = await ProductModel.updateOne(
-        {_id: req.params._id}, 
-        {$set: {imageUrl: req.body.imageUrl , title: req.body.title, stock: req.body.stock, description: req.body.description}}
-    );
-    res.json(update)
-  }catch(error){
-    res.json({message: error})
-  }
-}
-
+// module.exports.update = async (req, res) => {
+//   try {
+//     const update = await ProductModel.updateOne(
+//       { _id: req.params._id },
+//       {
+//         $set: {
+//           imageUrl: req.body.imageUrl,
+//           title: req.body.title,
+//           stock: req.body.stock,
+//           description: req.body.description,
+//         },
+//       }
+//     );
+//     res.json(update);
+//   } catch (error) {
+//     res.json({ message: error });
+//   }
+// };

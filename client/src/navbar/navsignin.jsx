@@ -34,7 +34,6 @@ export default function ButtonAppBar(props) {
           <Typography variant="h4" className={classes.title} onClick={() =>props.changeView("details")}>
             Vapers Store
           </Typography>
-          
           <Button color="inherit" onClick={() =>props.changeView("signup")}>Sign Up</Button>
         </Toolbar>
       </AppBar>
