@@ -53,7 +53,7 @@ export default function MediaCard(props) {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary" onClick={()=>props.changeView("Prodetail",product)}>
+              <Button size="small" color="primary" onClick ={()=>props.changeView("Prodetail")}>
                 more details
               </Button>
               <Button size="small" color="primary">

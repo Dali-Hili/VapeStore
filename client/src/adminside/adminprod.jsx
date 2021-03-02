@@ -195,9 +195,6 @@ export default function PersistentDrawerLeft(props) {
                     >
                       {product.description}
                     </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
                   <Button
                     size="small"
                     color="primary"
@@ -208,6 +205,9 @@ export default function PersistentDrawerLeft(props) {
                   <Button size="small" color="primary">
                     update
                   </Button>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
                 </CardActions>
               </Card>
             </main>
