@@ -102,31 +102,29 @@ module.exports.updateprod = async function (req, res) {
     description: req.body.description,
   };
   try {
-    const product = await ProductModel.findByIdAndUpdate({
-      _id: req.params.id,
-    },prod);
-    
-    res.send(product);
+    let product = await ProductModel.findOne({ _id: req.params.id })
+    let update = await product.update({ imageUrl: req.body.imageUrl, title: req.body.title, stock: req.body.stock, description: req.body.description}) 
+    res.send(update);
   } catch (err) {
     res.send(err);
   }
 };
 
-module.exports.update = async (req, res) => {
-  try {
-    const update = await ProductModel.updateOne(
-      { _id: req.params._id },
-      {
-        $set: {
-          imageUrl: req.body.imageUrl,
-          title: req.body.title,
-          stock: req.body.stock,
-          description: req.body.description,
-        },
-      }
-    );
-    res.json(update);
-  } catch (error) {
-    res.json({ message: error });
-  }
-};
+// module.exports.update = async (req, res) => {
+//   try {
+//     const update = await ProductModel.updateOne(
+//       { _id: req.params._id },
+//       {
+//         $set: {
+//           imageUrl: req.body.imageUrl,
+//           title: req.body.title,
+//           stock: req.body.stock,
+//           description: req.body.description,
+//         },
+//       }
+//     );
+//     res.json(update);
+//   } catch (error) {
+//     res.json({ message: error });
+//   }
+// };
