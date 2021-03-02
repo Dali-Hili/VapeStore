@@ -17,15 +17,18 @@
   width: 333px;
 }
 
-.MuiPaper-root.MuiCard-root.makeStyles-root-7.MuiPaper-elevation1.MuiPaper-rounded{
+.admincard{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
   grid-gap: 1rem;
   flex-direction: column;
   align-items: center;
-  margin-left: 3em;
-  margin-right: 3em;
+  margin-right: 0em;
+  margin-left: 49em;
   margin-top: 3em;
   margin-bottom: 2em;
+}
+.MuiButton-label{
+  margin-left: 128rem;
 }
