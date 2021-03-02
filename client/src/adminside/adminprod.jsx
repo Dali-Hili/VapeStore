@@ -120,6 +120,7 @@ const   handelDelete = (product)=> {
     .catch((err) => {
       console.log(err);
     });
+    window.location.reload()
 }
   return (  <div className={classes.root} className="admincard">
   {props.data.map((product, i) => {
@@ -221,7 +222,7 @@ const   handelDelete = (product)=> {
                 >
                   delete
                 </Button>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" onClick={()=>{props.changeView("update")}}>
                   update
                 </Button>
               </CardContent>
