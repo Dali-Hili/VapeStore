@@ -16,3 +16,19 @@
   height: 285px;
   width: 333px;
 }
+
+.admincard{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 0em;
+  margin-left: 49em;
+  margin-top: 3em;
+  margin-bottom: 2em;
+}
+.MuiButton-label{
+  margin-left: 128rem;
+}
