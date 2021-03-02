@@ -103,7 +103,10 @@ export default function PersistentDrawerLeft(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  const logout =  ()=>{
+    localStorage.clear()
+    window.location.reload()
+}
   return (
     <div className={classes.root}>
       {props.data.map((product, i) => {
@@ -125,10 +128,12 @@ export default function PersistentDrawerLeft(props) {
                   className={clsx(classes.menuButton, open && classes.hide)}
                 ></IconButton>
                 <Typography variant="h6" noWrap>
-                  Persistent drawer
+                  Vape Store 
                 </Typography>
+          <Button color="inherit" onClick={()=>logout()}>Logout</Button>
               </Toolbar>
             </AppBar>
+
             <Drawer
               className={classes.drawer}
               variant="persistent"
