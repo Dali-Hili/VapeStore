@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useState } from "react";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -99,7 +99,7 @@ export default function PersistentDrawerLeft(props) {
   const handleDrawerOpen = () => {
     setOpen(true);
   };
-
+  
   const handleDrawerClose = () => {
     setOpen(false);
   };
@@ -107,6 +107,7 @@ export default function PersistentDrawerLeft(props) {
     localStorage.clear()
     window.location.reload()
 }
+
   return (
     <div className={classes.root} className="admincard">
       {props.data.map((product, i) => {
@@ -195,20 +196,20 @@ export default function PersistentDrawerLeft(props) {
                     >
                       {product.description}
                     </Typography>
-                  </CardContent>
-               <div> <CardActions>
-                <Button
+                  <Button
                     size="small"
                     color="primary"
-                    
+                    onClick={(product)=>{props.handelDelete(product.id)}}
                   >
                    delete
                   </Button>
                   <Button size="small" color="primary">
                     update
-                  </Button> 
-                </CardActions></div> 
+                  </Button>
+                  </CardContent>
                 </CardActionArea>
+                <CardActions>
+                </CardActions>
               </Card>
             </main>
           </div>
