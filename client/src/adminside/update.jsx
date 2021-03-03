@@ -16,10 +16,11 @@ export default function BasicTextFields(props) {
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="filled-basic" label="Filled" variant="filled"  />
-      <TextField id="filled-basic" label="Filled" variant="filled"  />
-      <TextField id="filled-basic" label="Filled" variant="filled"/>
-      <TextField id="filled-basic" label="Filled" variant="filled"  />
+      <TextField id="filled-basic" label="ImageUrl" variant="filled"  />
+      <TextField id="filled-basic" label="Title" variant="filled"  />
+      <TextField id="filled-basic" label="Stock" variant="filled"/>
+      <TextField id="filled-basic" label="Description" variant="filled"/>
+      <TextField id="filled-basic" label="Prise" variant="filled"/>
       <Button>update</Button>
     </form>
   );

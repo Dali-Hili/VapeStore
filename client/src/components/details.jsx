@@ -21,6 +21,7 @@ export default function Prodetail(props) {
   const classes = useStyles();
 
   return (
+    <div className="detailscard">
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
@@ -46,5 +47,6 @@ export default function Prodetail(props) {
         </Button>
       </CardActions>
     </Card>
+    </div>
   );
 }

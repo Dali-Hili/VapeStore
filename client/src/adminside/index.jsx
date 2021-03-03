@@ -16,7 +16,6 @@ export default class Admin extends Component {
     this.changeView = this.changeView.bind(this);
     this.renderView = this.renderView.bind(this);
     this.getdata = this.getdata.bind(this)
-    this.handleChange=this.handleChange.bind(this)
   }
   componentDidMount() {
     if (
@@ -79,15 +78,15 @@ export default class Admin extends Component {
       return (
         <div>
           <Adminprod
-            data={this.state.data}
             changeView={(view,product) => this.changeView(view,product)}
+            data={this.state.data}
             
           />
         </div>
       );
     }
     if (view === "update") {
-      return <Update getdata={this.getdata()} handleChange={this.handleChange} state={this.state} />;
+      return <Update/>;
     }
   }
 
