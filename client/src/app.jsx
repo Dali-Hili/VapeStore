@@ -66,6 +66,7 @@ export default class App extends React.Component {
 
   render() {
     {
+    
       if (this.state.view !== "admin") {
         return (
           <div>

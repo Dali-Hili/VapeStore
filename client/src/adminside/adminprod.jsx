@@ -222,7 +222,7 @@ const   handelDelete = (product)=> {
                 >
                   delete
                 </Button>
-                <Button size="small" color="primary" onClick={()=>{props.changeView("update")}}>
+                <Button size="small" color="primary" onClick={()=>{props.changeView("update",product)}}>
                   update
                 </Button>
               </CardContent>
