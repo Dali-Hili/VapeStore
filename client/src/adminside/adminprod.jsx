@@ -122,6 +122,10 @@ const   handelDelete = (product)=> {
     });
     window.location.reload()
 }
+const getData=(data)=>{
+  setState({ uptodate: data }),
+  setState({ id: data._id })
+}
   return (  <div className={classes.root} className="admincard">
   {props.data.map((product, i) => {
     return (
