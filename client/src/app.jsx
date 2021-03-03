@@ -4,7 +4,7 @@ import axios from "axios";
 import Product from "./components/product.jsx";
 import Signup from "./components/signUp.jsx";
 import Signin from "./components/signIn.jsx";
-import NavBar from "./navbar/navBar.jsx";
+import NavBar from "./navbar/navbarprod.jsx";
 import Pro from "./components/pro.jsx";
 import Admin from "./adminside/index.jsx";
 import Prodetail from "./components/details.jsx";

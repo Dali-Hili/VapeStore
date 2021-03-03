@@ -28,7 +28,7 @@ export default function BasicTextFields(props) {
   }
  const handleSubmit=() =>{
     axios.put(`/api/vapeStore/update/${props.product._id}`,state.uptodate)
-        .then((result) => { alert("result") })
+        .then((result) => { alert("Product has been updated successfully") })
 }
   const handleChange = (e) => {
     switch (e.target.name) {
@@ -126,7 +126,7 @@ export default function BasicTextFields(props) {
       />
       <TextField
         id="filled-basic"
-        label="{Description"
+        label="Description"
         variant="filled"
         name="description"
         value={state.uptodate.description}
