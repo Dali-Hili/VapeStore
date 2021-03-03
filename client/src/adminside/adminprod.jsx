@@ -25,6 +25,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import axios from "axios";
 
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -124,6 +125,7 @@ export default function PersistentDrawerLeft(props) {
   const getData = (data) => {
     setState({ uptodate: data }), setState({ id: data._id });
   };
+
   return (
     <div className={classes.root} className="admincard">
       {props.data.map((product, i) => {
@@ -175,7 +177,7 @@ export default function PersistentDrawerLeft(props) {
               <List>
                 <ListItem >
                   <ListItemIcon>
-                    <Button size="small" color="primary">
+                    <Button size="small" color="primary" onClick={()=>props.changeView("create",product)}>
                       Add
                     </Button>
                     <Button size="small" color="primary">

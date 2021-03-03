@@ -129,7 +129,7 @@ export default function BasicTextFields(props) {
       />
       <TextField
         id="filled-basic"
-        label="{Description"
+        label="Description"
         variant="filled"
         name="description"
         value={state.uptodate.description}
