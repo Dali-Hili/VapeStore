@@ -122,6 +122,10 @@ const   handelDelete = (product)=> {
     });
     window.location.reload()
 }
+const getData=(data)=>{
+  setState({ uptodate: data }),
+  setState({ id: data._id })
+}
   return (  <div className={classes.root} className="admincard">
   {props.data.map((product, i) => {
     return (
@@ -223,7 +227,7 @@ const   handelDelete = (product)=> {
                   delete
                 </Button>
                 <Button size="small" color="primary" onClick={()=>{props.changeView("update",product)}}>
-                  updatee
+                  update
                 </Button>
               </CardContent>
             </CardActionArea>
