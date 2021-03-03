@@ -74,14 +74,14 @@ export default class App extends React.Component {
           </div>
         );
       }
+      return (
+        <div>
+          
+          <div>{this.renderView()}</div>
+        </div>
+      );
     }
-    return (
-      <div>
-        
-        <div>{this.renderView()}</div>
-      </div>
-    );
-  }
+    }
 }
 
 ReactDOM.render(<App />, document.getElementById("app"));
