@@ -30,7 +30,7 @@ export default function Prodetail(props) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-         { props.product.title}
+         {props.product.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
            {props.product.description}
@@ -41,8 +41,8 @@ export default function Prodetail(props) {
         <Button size="small" color="primary">
           {props.product.prise}
         </Button>
-        <Button size="small" color="primary">
-          Learn More
+        <Button size="small" color="primary" onClick={()=>props.changeView("signin")}>
+          Order now
         </Button>
       </CardActions>
     </Card>

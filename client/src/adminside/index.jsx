@@ -67,7 +67,7 @@ export default class Admin extends Component {
       );
     }
     if (view === "update") {
-      return <Update />;
+      return <Update  changeView={(view,product) => this.changeView(view,product)} product={this.state.product} />;
     }
   }
 
