@@ -157,29 +157,7 @@ export default function PersistentDrawerLeft() {
           [classes.contentShift]: open,
         })}
       >
-        <div className={classes.drawerHeader} />
-           <div className={classes.toolbar} />
-           <Card className={classes.root}>
-            <CardActionArea>
-              <CardMedia className={classes.media} image={product.imageUrl} id="prodImage" title="Contemplative Reptile" />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {product.title}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {product.description}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Button size="small" color="primary" onClick={()=>props.changeView("Prodetail",product)}>
-                delete
-              </Button>
-              <Button size="small" color="primary">
-                update
-              </Button>
-            </CardActions>
-          </Card>
+        
       
         
     </main>

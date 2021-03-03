@@ -56,8 +56,8 @@ export default function MediaCard(props) {
               <Button size="small" color="primary" onClick ={()=>props.changeView("userprod",product)}>
                 more details
               </Button>
-              <Button size="small" color="primary">
-                order now!!!!!!
+              <Button size="small" color="primary" onClick={()=>props.changeView("userprod")}>
+                order now!
               </Button>
             </CardActions>
           </Card></div>

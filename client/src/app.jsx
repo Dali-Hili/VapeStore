@@ -4,13 +4,15 @@ import axios from "axios";
 import Product from "./components/product.jsx";
 import Signup from "./components/signUp.jsx";
 import Signin from "./components/signIn.jsx";
-import NavBar from "./navbar/navbarprod.jsx";
+import NavBar from "./navbar/navBar.jsx";
 import Pro from "./components/pro.jsx";
 import Admin from "./adminside/index.jsx";
 import Prodetail from "./components/details.jsx";
 import Navsignup from "./navbar/navsignup.jsx";
 import Navsignin from "./navbar/navsignin.jsx";
 import Navbarprod from './navbar/navbarprod.jsx';
+import Userprod from "./userside/product.jsx";
+import Userdetails from "./userside/productdetails.jsx";
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -61,6 +63,9 @@ export default class App extends React.Component {
     }
     if (view === "Prodetail") {
       return <div><NavBar changeView={(data) => this.changeView(data)}/><Prodetail changeView={(view,product) => this.changeView(view,product) } product={this.state.product} /></div>;
+    }
+    if (view === "userprod") {
+      return <div> <Navbarprod changeView={(data) => this.changeView(data)}/> <Userdetails changeView={(view,product) => this.changeView(view,product) } data={this.state.data} product={this.state.product}/></div>;
     }
   }
 

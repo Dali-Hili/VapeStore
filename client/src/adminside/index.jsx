@@ -3,6 +3,7 @@ import Adminnavbar from "../navbar/navadmin.jsx";
 import Adminprod from "./adminprod.jsx";
 import axios from "axios";
 import Update from "./update.jsx";
+import CreateProd from "./createProduct.jsx"
 export default class Admin extends Component {
   constructor(props) {
     super(props);
@@ -87,6 +88,9 @@ export default class Admin extends Component {
     }
     if (view === "update") {
       return <Update  changeView={(view,product) => this.changeView(view,product)} product={this.state.product} />;
+    }
+    if(view === "create"){
+      return <CreateProd/>
     }
   }
 
