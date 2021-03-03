@@ -27,10 +27,13 @@ export default function BasicTextFields(props) {
     setState({ id: data._id })
   }
  const handleSubmit=() =>{
+   
     axios.put(`/api/vapeStore/update/${props.product._id}`,state.uptodate)
         .then((result) => { alert("result") })
+        window.location.reload()
 }
   const handleChange = (e) => {
+    
     switch (e.target.name) {
       case "imageUrl":
         setState({
