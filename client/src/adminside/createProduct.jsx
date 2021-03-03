@@ -49,19 +49,78 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles();
   const [state, setState] = useState({
-   create:{ imageUrl: "",
+    uptodate : { imageUrl: "",
     title: "",
     stock: "",
     description: "",
     prise: "",}
   });
   const handleChange = (e) => {
-    setState({ [e.target.name]: e.target.value });
-    console.log(state);
+
+  
+    switch (e.target.name) {
+        case "imageUrl":
+          setState({
+            uptodate: {
+              imageUrl: e.target.value,
+              title: state.uptodate.title,
+              stock: state.uptodate.stock,
+              description: state.uptodate.value,
+              prise: state.uptodate.prise
+            },
+          });
+          break;
+        case "title":
+          setState({
+            uptodate: {
+              imageUrl: state.uptodate.imageUrl,
+              title: e.target.value,
+              stock: state.uptodate.stock,
+              description: state.uptodate.value,
+              prise: state.uptodate.prise
+            },
+          });
+          break;
+        case "stock":
+          setState({
+            uptodate: {
+              imageUrl: state.uptodate.imageUrl,
+              title: state.uptodate.title,
+              stock: e.target.value,
+              description: state.uptodate.value,
+              prise: state.uptodate.prise
+            },
+          });
+          break;
+        case "description":
+          setState({
+            uptodate: {
+              imageUrl: state.uptodate.imageUrl,
+              title: state.uptodate.title,
+              stock: state.uptodate.stock,
+              description: e.target.value,
+              prise: state.uptodate.prise
+            },
+          });
+          break;
+          case "prise":
+              setState({
+                uptodate: {
+                  imageUrl: state.uptodate.imageUrl,
+                  title: state.uptodate.title,
+                  stock: state.uptodate.stock,
+                  description: state.uptodate.description,
+                  prise: e.target.value
+                },
+              });
+              break;
+      }
+      console.log(state.uptodate)
   };
   const handleSubmit = () => {
+      console.log(state);
     axios
-      .post("/api/vapeStore/add", state.create)
+      .post("/api/vapeStore/add", state.uptodate)
       .then((response) => {
         alert("prod added");
       })

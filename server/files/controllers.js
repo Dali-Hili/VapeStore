@@ -76,6 +76,7 @@ module.exports.findAll = async function (req, res) {
 };
 
 module.exports.addprod = async function (req, res) {
+  console.log(req.body)
   try {
     const product = await ProductModel.create(req.body);
     res.send(product);
