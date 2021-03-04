@@ -37,3 +37,24 @@
   height: 285px;
   width: 333px;
 }
+.update-container{
+  /* width: 50%; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* background-color:#B0E0E6; */
+    /* margin-top: 2.09em; */
+    /* box-shadow: 1px 1px 8px black; */
+    margin-left: 36em;
+    /* margin-top: 0.9em; */
+    /* margin-bottom: -2em; */
+}
+.makeStyles-root-19{
+  margin-left: 11rem;
+  margin-top: 15rem;
+}
+.MuiInputBase-root.MuiFilledInput-root.MuiFilledInput-underline.MuiInputBase-formControl{
+  width:38rem;
+}
+/* .MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary{ */
+  /* margin-left: 13rem; */
+/* } */

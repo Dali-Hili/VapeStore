@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
 import axios from "axios"
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
       width: "25ch",
+      display:"grid",
     },
   },
 }));
@@ -94,7 +100,16 @@ export default function BasicTextFields(props) {
     console.log(uptodate)
   };
   return (
+      <div className='update-container'>
     <form className={classes.root} noValidate autoComplete="off">
+    <Card className={classes.root}>
+    <CardActionArea>
+    <CardMedia
+                    className={classes.media}
+                    image={state.uptodate.imageUrl}
+                    id="prodImage"
+                    title="Contemplative Reptile"
+                  /></CardActionArea></Card>
       <TextField
         id="filled-basic"
         label="ImageUrl"
@@ -102,6 +117,7 @@ export default function BasicTextFields(props) {
         name = "imageUrl"
         value={state.uptodate.imageUrl}
         onChange={(e)=>handleChange(e)}
+        autoComplete="imageUrl"
       />
       <TextField
         id="filled-basic"
@@ -110,6 +126,7 @@ export default function BasicTextFields(props) {
         name = "title"
         value={state.uptodate.title}
         onChange={(e)=>handleChange(e)}
+        autoComplete="title"
       />
       <TextField
         id="filled-basic"
@@ -118,6 +135,7 @@ export default function BasicTextFields(props) {
         name="stock"
         value={state.uptodate.stock}
         onChange={(e)=>handleChange(e)}
+        autoComplete="stock"
       />
       <TextField
         id="filled-basic"
@@ -126,6 +144,7 @@ export default function BasicTextFields(props) {
         name="prise"
         value={state.uptodate.prise}
         onChange={(e)=>handleChange(e)}
+        autoComplete="prise"
       />
       <TextField
         id="filled-basic"
@@ -134,10 +153,12 @@ export default function BasicTextFields(props) {
         name="description"
         value={state.uptodate.description}
         onChange={(e)=>handleChange(e)}
+        autoComplete="description"
       />
-      <Button className="logoutbtn" color="primary" onClick={handleSubmit}>
-        Update
+      <Button variant="contained" color="primary" onClick={handleSubmit}>
+       Update
       </Button>
     </form>
+    </div>
   );
 }

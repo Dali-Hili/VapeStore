@@ -81,7 +81,6 @@ export default class Admin extends Component {
           <Adminprod
             changeView={(view,product) => this.changeView(view,product)}
             data={this.state.data}
-            
           />
         </div>
       );
