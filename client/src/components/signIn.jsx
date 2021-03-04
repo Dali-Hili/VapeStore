@@ -19,7 +19,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit">Your Website</Link> {new Date().getFullYear()}
+      <Link color="inherit">Vape Store</Link> {new Date().getFullYear()}
       {"."}
     </Typography>
   );
@@ -63,13 +63,15 @@ export default function SignIn(props) {
     axios
       .post("/api/vapeStore/login", obj)
       .then((res) => {
-        console.log(res.data.message);
+        console.log(res.data);
         if (res.data === "admin") {
           localStorage.setItem("token" ,"admin")
           return props.changeView("admin");
         } else {
-          if (res.data.mesaage === "success") {
+          if (res.data.message === "success") {
+            console.log('im in');
             localStorage.setItem("token", res.data.token);
+            // console.log(localStorage.token);
             return props.changeView("pro");
           } else {
             alert(res.data.message);
@@ -112,7 +114,7 @@ export default function SignIn(props) {
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
+              autoComplete="password"
               onChange={(e) => handelChange(e)}
             />
 
@@ -121,7 +123,7 @@ export default function SignIn(props) {
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={() => handleClick()}
+              onClick={handleClick}
             >
               Sign In
             </Button>
