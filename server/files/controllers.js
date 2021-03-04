@@ -55,7 +55,7 @@ module.exports.findUser = async (req, res) => {
       if (await bcrypt.compare(req.body.password, user.password)) {
         const token = jwt.sign({ _id: user._id }, "fghfghrtfjyuuikyufiy");
         res.header("auth-token", token);
-        res.send({ mesaage: "success", token: token });
+        res.send({ message: "success", token: token });
       } else {
         res.send("Email or password incorrect");
       }
@@ -130,3 +130,6 @@ module.exports.updateprod = async function (req, res) {
 //     res.json({ message: error });
 //   }
 // };
+   
+
+// user side 
