@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
+  email: String,
   imageUrl: String,
   title: String,
   stock: Number,
-  description: String,
   prise: String,
 });
 
