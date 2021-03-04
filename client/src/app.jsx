@@ -13,6 +13,7 @@ import Navsignin from "./navbar/navsignin.jsx";
 import Navbarprod from './navbar/navbarprod.jsx';
 import Userprod from "./userside/product.jsx";
 import Userdetails from "./userside/productdetails.jsx";
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -67,6 +68,7 @@ export default class App extends React.Component {
     if (view === "userprod") {
       return <div> <Navbarprod changeView={(data) => this.changeView(data)}/> <Userdetails changeView={(view,product) => this.changeView(view,product) } data={this.state.data} product={this.state.product}/></div>;
     }
+   
   }
 
   render() {

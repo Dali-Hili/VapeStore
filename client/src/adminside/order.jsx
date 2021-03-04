@@ -1,4 +1,4 @@
-import React from "react";
+import React , { useState }from "react";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -97,7 +97,9 @@ export default function PersistentDrawerLeft(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+const [state, setState]= useState({
+    data:[]
+})
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -109,26 +111,34 @@ export default function PersistentDrawerLeft(props) {
     localStorage.clear();
     window.location.reload();
   };
+  const componentDidMount=() =>{
+ 
+fetchData();
+  }
 
+ const fetchData=() =>{
+    axios.get("/api/vapeStore/orders").then((res) => {
+      setState({ data: res.data });
+    });
+  }
   const handelDelete = (product) => {
-    console.log("azdadzadzadzadz", product._id);
+    console.log("deleted order", product._id);
     axios
-      .delete(`/api/vapeStore/delete/${product._id}`)
+      .delete(`/api/vapeStore/deleteOrder/${product._id}`)
       .then((result) => {
         console.log(result);
       })
       .catch((err) => {
         console.log(err);
-      });
+      });result
     window.location.reload();
   };
-  const getData = (data) => {
-    setState({ uptodate: data }), setState({ id: data._id });
-  };
-
+ 
+  componentDidMount()
   return (
     <div className={classes.root} className="admincard">
-      {props.data.map((product, i) => {
+       
+      {state.data.map((product, i) => {
         return (
           <div key={i}>
             <CssBaseline />
@@ -177,11 +187,11 @@ export default function PersistentDrawerLeft(props) {
               <List>
                 <ListItem >
                   <ListItemIcon>
-                    <Button size="small" color="primary" onClick={()=>props.changeView("create",product)}>
+                    <Button size="small" color="primary" onClick={()=>props.changeView("create")}>
                       Add
                     </Button>
-                    <Button size="small" color="primary" onClick={()=>props.changeView("order")}>
-                      Product
+                    <Button size="small" color="primary"onClick={()=>props.changeView("order")}>
+                      product
                     </Button>
                     <Button size="small" color="primary">
                       Stock
@@ -223,7 +233,7 @@ export default function PersistentDrawerLeft(props) {
                       color="textSecondary"
                       component="p"
                     >
-                      {product.description}
+                      {product.email}
                     </Typography>
                     <Button
                       size="small"
@@ -237,9 +247,7 @@ export default function PersistentDrawerLeft(props) {
                     <Button
                       size="small"
                       color="primary"
-                      onClick={() => {
-                        props.changeView("update", product);
-                      }}
+                    
                     >
                       update
                     </Button>
