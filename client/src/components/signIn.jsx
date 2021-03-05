@@ -70,7 +70,7 @@ export default function SignIn(props) {
         } else {
           if (res.data.message === "success") {
             console.log('im in');
-            localStorage.setItem("token", res.data.token);
+            localStorage.setItem(obj.email, res.data.token);
             // console.log(localStorage.token);
             return props.changeView("pro");
           } else {

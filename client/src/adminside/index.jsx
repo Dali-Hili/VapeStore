@@ -3,7 +3,8 @@ import Adminnavbar from "../navbar/navadmin.jsx";
 import Adminprod from "./adminprod.jsx";
 import axios from "axios";
 import Update from "./update.jsx";
-import CreateProd from "./createProduct.jsx"
+import CreateProd from "./createProduct.jsx";
+import Orders from "./order.jsx"
 export default class Admin extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +17,7 @@ export default class Admin extends Component {
     this.handelDelete = this.handelDelete.bind(this);
     this.changeView = this.changeView.bind(this);
     this.renderView = this.renderView.bind(this);
-    this.getdata = this.getdata.bind(this)
+   
   }
   componentDidMount() {
     if (
@@ -51,27 +52,8 @@ export default class Admin extends Component {
         console.log(err);
       });
   }
-  getdata() {
-    this.setState({ uptodate: this.state.data });
-  }
-  // handleChange(e) {
-  //   switch (e.target.name) {
-  //       case "imageUrl":
-  //           this.setState({ uptodate: { imageUrl: e.target.value, title: this.state.uptodate.title, stock: this.state.uptodate.stock, description: this.state.uptodate.value} })
-  //           break;
-  //       case "title":
-  //           this.setState({ uptodate: { imageUrl: this.state.uptodate.imageUrl, title: e.target.value, stock: this.state.uptodate.stock, description: this.state.uptodate.value} })
-  //           break;
-  //       case "stock":
-  //           this.setState({ uptodate: { imageUrl: this.state.uptodate.imageUrl, title: this.state.uptodate.title, stock: e.target.value ,description: this.state.uptodate.value } })
-  //           break;
-  //       case "description":
-  //           this.setState({ uptodate: { imageUrl: this.state.uptodate.imageUrl, title: this.state.uptodate.title,stock:this.state.uptodate.stock, description: e.target.value } })
-  //             break;
-  //   }
-  //   console.log({uptodate});
 
-// }
+
 
   renderView() {
     const { view } = this.state;
@@ -90,6 +72,9 @@ export default class Admin extends Component {
     }
     if(view === "create"){
       return <CreateProd/>
+    }
+    if (view === "order") {
+      return <div>  <Orders changeView={(view,product) => this.changeView(view,product) } /></div>;
     }
   }
 

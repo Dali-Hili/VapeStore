@@ -4,7 +4,7 @@ const ProductModel = require("../database/productModel.js");
 const bcrypt = require("bcrypt");
 const { signupValidation, loginValidation } = require("../auth");
 const jwt = require("jsonwebtoken");
-
+const OrderModel= require("../database/order.js")
 module.exports.findAllusers = async function (req, res) {
   try {
     const products = await UserModel.find({});
@@ -53,13 +53,13 @@ module.exports.findUser = async (req, res) => {
         console.log("user not found");
       }
       if (await bcrypt.compare(req.body.password, user.password)) {
+        // create and assign a token
         const token = jwt.sign({ _id: user._id }, "fghfghrtfjyuuikyufiy");
         res.header("auth-token", token);
         res.send({ message: "success", token: token });
       } else {
         res.send("Email or password incorrect");
       }
-      // create and assign a token
     } catch (err) {
       res.send(err);
     }
@@ -133,3 +133,32 @@ module.exports.updateprod = async function (req, res) {
    
 
 // user side 
+// create order 
+module.exports.createOrder = async function (req, res) {
+  console.log(req.body)
+  try {
+    const order = await OrderModel.create(req.body);
+    res.send(order);
+  } catch (err) {
+    res.send(err);
+  }
+};
+module.exports.findAllOrders = async function (req, res) {
+  try {
+    const order = await OrderModel.find({});
+    res.send(order);
+  } catch (error) {
+    res.send(error);
+  }
+};
+module.exports.deleteOrder = async function (req, res) {
+  console.log(req.params._id);
+  try {
+    const order = await OrderModel.findByIdAndDelete({
+      _id: req.params.id,
+    });
+    res.send(order);
+  } catch (err) {
+    res.send(err);
+  }
+};
