@@ -20,17 +20,18 @@ const useStyles = makeStyles({
 export default function Prodetail(props) {
   const classes = useStyles();
   const [state, setState] = useState({
-    email:localStorage.key(0) ,
+    email:localStorage.getItem("user") ,
   imageUrl:props.product.imageUrl,
   title:props.product.title ,
   stock:props.product.stock,
   prise: props.product.prise
   });
 const handleClick =()=>{
-    alert (props.product._id)
+    
     axios.post(`/api/vapeStore/order/${props.product._id}`,state).then((res)=>{
       alert ("your order is passed")
     }).catch((err)=>{console.log(err);})
+    
 }
   return (
     <div className="detailscard">

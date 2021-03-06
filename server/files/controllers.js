@@ -162,3 +162,12 @@ module.exports.deleteOrder = async function (req, res) {
     res.send(err);
   }
 };
+module.exports.cOrder = async function (req, res) {
+  console.log(req.body)
+  try {
+    const order = await OrderModel.create(req.body);
+    res.send(order);
+  } catch (err) {
+    res.send(err);
+  }
+};

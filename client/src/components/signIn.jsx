@@ -69,7 +69,8 @@ export default function SignIn(props) {
           return props.changeView("admin");
         } else {
           if (res.data.message === "success") {
-            localStorage.setItem(obj.email, res.data.token);
+            localStorage.setItem("token" , res.data.token);
+            localStorage.setItem("user",obj.email)
             console.log(localStorage.key(0));
             return props.changeView("pro");
           } else {
