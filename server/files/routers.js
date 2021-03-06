@@ -15,4 +15,5 @@ router.put('/update/:id', Controller.updateprod)
 router.post('/order/:id', Controller.createOrder)
 router.get('/orders', Controller.findAllOrders)
 router.delete('/deleteOrder/:id', Controller.deleteOrder)
+router.post("/order", Controller.cOrder)
 module.exports = router;
