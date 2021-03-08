@@ -71,7 +71,7 @@ export default class Admin extends Component {
       );
     }
     if (view === "update") {
-      return <Update  changeView={(view,product) => this.changeView(view,product)} product={this.state.product} />;
+      return <div> <Navbar changeView={(view,product) => this.changeView(view,product)} product={this.state.product}/> <Update  changeView={(view,product) => this.changeView(view,product)} product={this.state.product} /></div>;
     }
     if(view === "create"){
       return <div> <Navbar changeView={(view,product) => this.changeView(view,product)}/> <CreateProd/>  </div>
