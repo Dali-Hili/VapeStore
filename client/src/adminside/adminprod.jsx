@@ -9,9 +9,9 @@ import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-// import MenuIcon from '@material-ui/icons/Menu';
-// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -169,9 +169,9 @@ export default function PersistentDrawerLeft(props) {
     <div className={classes.root} className="admincard">
       {props.data.map((product, i) => {
         return (
-          <div key={i}>
+          <div key={i} >
             <CssBaseline />
-            <AppBar
+            {/* <AppBar
               position="fixed"
               className={clsx(classes.appBar, {
                 [classes.appBarShift]: open,
@@ -184,7 +184,9 @@ export default function PersistentDrawerLeft(props) {
                   onClick={handleDrawerOpen}
                   edge="start"
                   className={clsx(classes.menuButton, open && classes.hide)}
-                ></IconButton>
+                >
+                  <MenuIcon />
+                </IconButton>
                 <Typography variant="h6" noWrap>
                   Vape Store
                 </Typography>
@@ -208,6 +210,9 @@ export default function PersistentDrawerLeft(props) {
               }}
             >
               <div className={classes.drawerHeader}>
+              <IconButton onClick={handleDrawerClose}>
+            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          </IconButton>
                 <IconButton onClick={handleDrawerClose}>
                   {theme.direction}
                 </IconButton>
@@ -230,7 +235,7 @@ export default function PersistentDrawerLeft(props) {
               </List>
               <Divider />
            
-            </Drawer>
+            </Drawer> */}
             <main
               className={clsx(classes.content, {
                 [classes.contentShift]: open,
