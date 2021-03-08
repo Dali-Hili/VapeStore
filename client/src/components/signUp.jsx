@@ -70,6 +70,7 @@ const handleChange = (e) => {
          ...prevState,
          [name]: value
      }))
+     console.log(state);
 }
 const handleSubmit = (e) => {
   e.preventDefault();

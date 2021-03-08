@@ -6,6 +6,7 @@ import Update from "./update.jsx";
 import CreateProd from "./createProduct.jsx";
 import Orders from "./order.jsx"
 import Navbar from "./navbarAdmin.jsx"
+import Users from "./users.jsx"
 export default class Admin extends Component {
   constructor(props) {
     super(props);
@@ -77,6 +78,9 @@ export default class Admin extends Component {
     }
     if (view === "order") {
       return <div>  <Navbar changeView={(view,product) => this.changeView(view,product)}/> <Orders /></div>;
+    }
+    if (view === "user") {
+      return <div>  <Navbar changeView={(view,product) => this.changeView(view,product)}/> <Users /></div>;
     }
   }
 

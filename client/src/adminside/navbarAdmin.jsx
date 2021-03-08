@@ -149,8 +149,8 @@ export default function PersistentDrawerLeft(props) {
                     <Button size="small" color="primary" onClick={()=>props.changeView("order")}>
                       Orders
                     </Button>
-                    <Button size="small" color="primary">
-                      Stock
+                    <Button size="small" color="primary" onClick={()=>props.changeView("user")}>
+                      Users
                     </Button>
                   </ListItemIcon>
                 </ListItem>
