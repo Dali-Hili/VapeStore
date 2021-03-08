@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState }from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -14,7 +14,7 @@ import Typography from '@material-ui/core/Typography';
 // import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 // import MenuIcon from '@material-ui/icons/Menu';
-
+import Navbarprod from "../navbar/navbarprod.jsx"
 
 const useStyles = makeStyles({
   root: {
@@ -35,6 +35,25 @@ const useStyles = makeStyles({
 });
 export default function MediaCard(props) {
   const classes = useStyles();
+  var order = []
+const addTopanie = (product) =>{
+  console.log(product)
+  if(localStorage.getItem("order")){
+    var orderParse = localStorage.getItem( "order") 
+    var email = localStorage.getItem("user")
+    var parseEmail = JSON.stringify(email)
+    console.log(parseEmail);
+    order = JSON.parse(orderParse)
+    order.push([product.title, product.prise, product.imageUrl,parseEmail])
+  localStorage.setItem("order", JSON.stringify(order))
+  } else { 
+    order.push([product.title, product.prise, product.imageUrl])
+    localStorage.setItem("order", JSON.stringify(order))
+  }
+
+}
+
+
   return (
     <div className="card">
       {props.data.map((product, i) => {
@@ -53,16 +72,20 @@ export default function MediaCard(props) {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary" onClick ={()=>props.changeView("userprod",product)}>
+              <Button size="small" color="primary" onClick ={()=>props.changeView("userprod",product,order)}>
                 more details
               </Button>
-              <Button size="small" color="primary">
+              <Button size="small" color="primary" onClick={()=>{
+                 addTopanie(product)
+               }}>
                 order now!!!!!!
               </Button>
             </CardActions>
           </Card></div>
         );
       })}
+ 
+              
     </div>
   );
 }

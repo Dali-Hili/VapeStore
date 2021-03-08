@@ -13,7 +13,7 @@ import Navsignin from "./navbar/navsignin.jsx";
 import Navbarprod from './navbar/navbarprod.jsx';
 import Userprod from "./userside/product.jsx";
 import Userdetails from "./userside/productdetails.jsx";
-
+import ShowOrders from './userside/showOrders.jsx'
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -41,7 +41,7 @@ export default class App extends React.Component {
   changeView(view,product) {
     this.setState({
       view: view,
-      product: product
+      product: product,
     });
   }
 
@@ -57,7 +57,7 @@ export default class App extends React.Component {
       return <div><Navsignin changeView={(data) => this.changeView(data)}/><Signin changeView={(view) => this.changeView(view)} /></div>;
     }
     if (view === "pro") {
-      return <div> <Navbarprod/> <Pro data={this.state.data} changeView={(view,product) => this.changeView(view,product)} /></div>;
+      return <div> <Navbarprod changeView={(data) => this.changeView(data)}/> <Pro data={this.state.data} changeView={(view,product) => this.changeView(view,product)} product={this.state.product}  /></div>;
     }
     if (view === "admin") {
       return <div><Admin changeView={(view,product) => this.changeView(view,product)} /></div>;
@@ -66,9 +66,11 @@ export default class App extends React.Component {
       return <div><NavBar changeView={(data) => this.changeView(data)}/><Prodetail changeView={(view,product) => this.changeView(view,product) } product={this.state.product} /></div>;
     }
     if (view === "userprod") {
-      return <div> <Navbarprod changeView={(data) => this.changeView(data)}/> <Userdetails changeView={(view,product) => this.changeView(view,product) } data={this.state.data} product={this.state.product}/></div>;
+      return <div> <Navbarprod changeView={(data) => this.changeView(data)}/> <Userdetails changeView={(view,product) => this.changeView(view,product) } data={this.state.data} product={this.state.product} /></div>;
     }
-   
+    if (view === "showorder") {
+      return <div> <ShowOrders  changeView={(view,product) => this.changeView(view,product)} product={this.state.product}data={this.state.data}  /></div>;
+    }
   }
 
   render() {
