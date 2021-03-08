@@ -67,7 +67,7 @@ return 0
             color="inherit"
             aria-label="menu"
           ></IconButton>
-          <Typography variant="h4" className={classes.title} >
+          <Typography variant="h4" className={classes.title} onClick={()=>props.changeView("pro")} >
             Vapers Store
           </Typography>
           <IconButton aria-label="cart" onClick={()=>props.changeView("showorder")}>

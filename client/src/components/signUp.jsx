@@ -13,7 +13,7 @@ import Container from '@material-ui/core/Container';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-
+import Swal from 'sweetalert2'
 
 function Copyright() {
   return (
@@ -80,7 +80,22 @@ const handleSubmit = (e) => {
     }
     axios.post('/api/vapestore/create',userToAdd)
     .then((response)=>{
-        alert(response.data)
+      console.log(typeof response.data)
+      if(typeof response.data=== 'object'){
+        Swal.fire({
+          position: 'middle',
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(()=>{props.changeView("signin")})
+      }else if (typeof response.data!== 'object'){
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: response.data,
+        })
+      }
     }).catch((error)=>{
         console.log(error)
     })

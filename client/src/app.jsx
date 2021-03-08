@@ -69,7 +69,7 @@ export default class App extends React.Component {
       return <div> <Navbarprod changeView={(data) => this.changeView(data)}/> <Userdetails changeView={(view,product) => this.changeView(view,product) } data={this.state.data} product={this.state.product} /></div>;
     }
     if (view === "showorder") {
-      return <div> <ShowOrders  changeView={(view,product) => this.changeView(view,product)} product={this.state.product}data={this.state.data}  /></div>;
+      return <div><Navbarprod changeView={(data) => this.changeView(data)}/> <ShowOrders  changeView={(view,product) => this.changeView(view,product)} product={this.state.product}data={this.state.data}  /></div>;
     }
   }
 

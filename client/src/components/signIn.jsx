@@ -14,7 +14,7 @@ import Container from "@material-ui/core/Container";
 import IconButton from "@material-ui/core/IconButton";
 import axios from "axios";
 import Product from "./product.jsx";
-
+import Swal from 'sweetalert2'
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -74,7 +74,12 @@ export default function SignIn(props) {
             console.log(localStorage.key(0));
             return props.changeView("pro");
           } else {
-            alert(res.data.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong! Email or password incorrect . Please try again',
+          
+            })
           }
         }
       })

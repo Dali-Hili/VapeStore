@@ -16,8 +16,17 @@ import IconButton from "@material-ui/core/IconButton";
 // import MenuIcon from '@material-ui/icons/Menu';
 import Navbarprod from "../navbar/navbarprod.jsx";
 import axios from "axios";
-
+import { Alert, AlertTitle } from '@material-ui/lab';
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 export default function Orders(props) {
+  const classes = useStyles();
   var list = [];
   var email;
   var title;
@@ -33,22 +42,40 @@ export default function Orders(props) {
     prise: prise,
   });
   const handleClick = () => {
-    axios
-      .post(`/api/vapeStore/order`, state)
+var arrOfArray = JSON.parse(localStorage.getItem("order"))
+    console.log(JSON.parse(localStorage.getItem("order")))
+     arrOfArray.map((e,i)=>{
+       var onePruduct = { 
+        email: localStorage.getItem("user"),
+        imageUrl: e[2],
+        title: e[0],
+        stock: 0,
+        prise: e[1],
+       }
+       console.log("send ==> " , onePruduct)
+           axios
+      .post(`/api/vapeStore/order`, onePruduct)
       .then((res) => {
-        alert("your order is passed");
+        console.log("seccess")
         localStorage.removeItem("order");
         window.location.reload();
       })
       .catch((err) => {
         console.log(err);
       });
+     })
+ 
   };
 
   if (order === null) {
     return (
       <div className="card">
-        <h1>You have No order </h1>
+        <div className={classes.root}>
+      <Alert severity="warning">
+        <AlertTitle>Warning</AlertTitle>
+        You have No order
+      </Alert>
+    </div>
      
        
       </div>
