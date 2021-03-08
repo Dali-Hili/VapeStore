@@ -49,6 +49,12 @@ const shopping = ()=>{
   }
 }
 {shopping()}
+const number =()=>{
+if(JSON.parse(localStorage.getItem('order'))=== null){
+return 0
+}else{
+  return JSON.parse(localStorage.getItem('order')).length 
+}}
 
   return (
     <div className={classes.root}>
@@ -65,7 +71,8 @@ const shopping = ()=>{
             Vapers Store
           </Typography>
           <IconButton aria-label="cart" onClick={()=>props.changeView("showorder")}>
-      <StyledBadge badgeContent={0} color="secondary">
+      <StyledBadge badgeContent={number()} color="secondary">
+      
         <ShoppingCartIcon />
       </StyledBadge>
     </IconButton>
