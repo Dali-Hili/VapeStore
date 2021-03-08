@@ -77,6 +77,8 @@ const addTopanie = (product) =>{
               </Button>
               <Button size="small" color="primary" onClick={()=>{
                  addTopanie(product)
+                 alert("Order has been passed! Please confirm it through the shopping cart")
+                 window.location.reload()
                }}>
                 order now!!!!!!
               </Button>

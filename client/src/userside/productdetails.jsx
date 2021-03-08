@@ -26,12 +26,10 @@ export default function Prodetail(props) {
   stock:props.product.stock,
   prise: props.product.prise
   });
-const handleClick =()=>{
-    
+const handleClick =()=>{   
     axios.post(`/api/vapeStore/order/${props.product._id}`,state).then((res)=>{
       alert ("your order is passed")
-    }).catch((err)=>{console.log(err);})
-    
+    }).catch((err)=>{console.log(err);})   
 }
   return (
     <div className="detailscard">
