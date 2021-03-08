@@ -133,8 +133,8 @@ export default function PersistentDrawerLeft(props) {
           'Deleted!',
           'Your Product has been deleted.',
           'success',
-          location.reload()
-        )
+          
+        ).then(() => {location.reload()})
         axios
         .delete(`/api/vapeStore/delete/${product._id}`)
         .then((result) => {
