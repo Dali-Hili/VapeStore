@@ -142,7 +142,7 @@ fetchData();
         return (
           <div key={i}>
             <CssBaseline />
-            <AppBar
+            {/* <AppBar
               position="fixed"
               className={clsx(classes.appBar, {
                 [classes.appBarShift]: open,
@@ -167,7 +167,7 @@ fetchData();
                   Logout
                 </Button>
               </Toolbar>
-            </AppBar>
+            </AppBar> */}
 
             <Drawer
               className={classes.drawer}
@@ -190,7 +190,7 @@ fetchData();
                     <Button size="small" color="primary" onClick={()=>props.changeView("create")}>
                       Add
                     </Button>
-                    <Button size="small" color="primary"onClick={()=>props.changeView("order")}>
+                    <Button size="small" color="primary" onClick={()=>props.changeView("order")}>
                       product
                     </Button>
                     <Button size="small" color="primary">
