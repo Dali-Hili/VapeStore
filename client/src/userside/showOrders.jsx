@@ -24,12 +24,7 @@ export default function Orders(props) {
   var imageUrl;
   var prise;
   var order = JSON.parse(localStorage.getItem("order"));
-  order.map((e, i) => {
-    list.push(<li key={i}>{e}</li>);
-    console.log(order);
 
-    (email = e[3]), (imageUrl = e[2]), (title = e[0]), (prise = e[1]);
-  });
   const [state, setState] = useState({
     email: email,
     imageUrl: imageUrl,
@@ -50,13 +45,29 @@ export default function Orders(props) {
       });
   };
 
-  return (
-    <div className="card">
-      <h1>helloo world</h1>
-      {list}
-      <button onClick={handleClick}>confirm</button>
-    </div>
-  );
+  if (order === null) {
+    return (
+      <div className="card">
+        <h1>You have No order </h1>
+     
+       
+      </div>
+    );
+  } else {
+    order.map((e, i) => {
+      list.push(<li key={i}>{e}</li>);
+      console.log(order);
+  
+      (email = e[3]), (imageUrl = e[2]), (title = e[0]), (prise = e[1]);
+    });
+    return (
+      <div className="card">
+        <h1>helloo world</h1>
+        {list}
+        <button onClick={handleClick}>confirm</button>
+      </div>
+    );
+  }
 }
 
 // {props.data.map((product, i) => {
