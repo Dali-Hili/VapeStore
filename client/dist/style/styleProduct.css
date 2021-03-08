@@ -1,6 +1,5 @@
 .card {
   display: grid;
-
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
   grid-gap: 1rem;
@@ -11,50 +10,46 @@
   margin-top: 3em;
   margin-bottom: 2em;
 }
-
-#prodImage{
+#prodImage {
   height: 285px;
   width: 333px;
 }
-
-.admincard{
+.admincard {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
-  grid-gap: 1rem;
+  grid-gap: 0rem;
   flex-direction: column;
   align-items: center;
   margin-left: 25em;
   margin-right: 3em;
-  margin-top: -7em;
+  margin-top: -13em;
   margin-bottom: 2em;
 }
-.detailscard{
+.detailscard {
   margin-left: 58rem;
   margin-top: 8rem;
 }
-.MuiCardMedia-root.makeStyles-media-8{
+.MuiCardMedia-root.makeStyles-media-8 {
   height: 285px;
   width: 333px;
 }
-.update-container{
-  /* width: 50%; */
-    /* display: flex; */
-    /* justify-content: center; */
-    /* background-color:#B0E0E6; */
-    /* margin-top: 2.09em; */
-    /* box-shadow: 1px 1px 8px black; */
-    margin-left: 36em;
-    /* margin-top: 0.9em; */
-    /* margin-bottom: -2em; */
+.update-container {
+  margin-left: 36em;
+
 }
-/* .makeStyles-root-19{
-  margin-left: 11rem;
-  margin-top: 15rem;
-} */
-.MuiInputBase-root.MuiFilledInput-root.MuiFilledInput-underline.MuiInputBase-formControl{
-  width:38rem;
+.MuiInputBase-root.MuiFilledInput-root.MuiFilledInput-underline.MuiInputBase-formControl {
+  width: 38rem;
 }
-main.makeStyles-content-26{
+main.makeStyles-content-26 {
   margin-left: -86px;
+}
+.MuiPaper-root.MuiCard-root.makeStyles-root-29.MuiPaper-elevation1.MuiPaper-rounded {
+  width: 77ch;
+}
+.makeStyles-root-29 {
+  margin-left: 24em;
+}
+.MuiButtonBase-root.MuiButton-root.MuiButton-text.logoutbtn.MuiButton-colorInherit{
+margin-left:120em
 }
