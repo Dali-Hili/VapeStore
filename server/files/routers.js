@@ -5,6 +5,7 @@ const verify = require("./verifyToken.js")
 router.get("/users", Controller.findAllusers);
 router.post('/create', Controller.createOne);
 router.post('/login', Controller.findUser)
+router.delete('/remove/:id', Controller.deleteUser)
 
 //ADMIN
 router.get("/products", Controller.findAll);

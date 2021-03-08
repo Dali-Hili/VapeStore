@@ -235,15 +235,9 @@ fetchData();
                         handelDelete(product);
                       }}
                     >
-                      delete
+                      Done
                     </Button>
-                    <Button
-                      size="small"
-                      color="primary"
-                    
-                    >
-                      update
-                    </Button>
+                   
                   </CardContent>
                 </CardActionArea>
                 <CardActions></CardActions>

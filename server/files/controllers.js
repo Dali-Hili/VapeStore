@@ -13,7 +13,17 @@ module.exports.findAllusers = async function (req, res) {
     res.send(error);
   }
 };
-
+module.exports.deleteUser = async function (req, res) {
+  console.log(req.params._id);
+  try {
+    const product = await UserModel.findByIdAndDelete({
+      _id: req.params.id,
+    });
+    res.send(product);
+  } catch (err) {
+    res.send(err);
+  }
+};
 module.exports.createOne = async (req, res) => {
   //VALIDATE THE DATA
   const { error } = signupValidation(req.body);
