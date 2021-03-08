@@ -5,6 +5,7 @@ import axios from "axios";
 import Update from "./update.jsx";
 import CreateProd from "./createProduct.jsx";
 import Orders from "./order.jsx"
+import Navbar from "./navbarAdmin.jsx"
 export default class Admin extends Component {
   constructor(props) {
     super(props);
@@ -60,6 +61,7 @@ export default class Admin extends Component {
     if (view === "admin") {
       return (
         <div>
+          <Navbar changeView={(view,product) => this.changeView(view,product)} product={this.state.product}/>
           <Adminprod
             changeView={(view,product) => this.changeView(view,product)}
             data={this.state.data}
@@ -71,10 +73,10 @@ export default class Admin extends Component {
       return <Update  changeView={(view,product) => this.changeView(view,product)} product={this.state.product} />;
     }
     if(view === "create"){
-      return <CreateProd/>
+      return <div> <Navbar changeView={(view,product) => this.changeView(view,product)}/> <CreateProd/>  </div>
     }
     if (view === "order") {
-      return <div>  <Orders changeView={(view,product) => this.changeView(view,product) } /></div>;
+      return <div>  <Navbar changeView={(view,product) => this.changeView(view,product)}/> <Orders /></div>;
     }
   }
 

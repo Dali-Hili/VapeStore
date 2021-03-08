@@ -89,7 +89,6 @@ var arrOfArray = JSON.parse(localStorage.getItem("order"))
     });
     return (
       <div className="card">
-        <h1>helloo world</h1>
         {list}
         <button onClick={handleClick}>confirm</button>
       </div>
