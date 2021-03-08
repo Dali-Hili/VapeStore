@@ -24,7 +24,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import axios from "axios";
-
+import Swal from 'sweetalert2'
 
 const drawerWidth = 240;
 
@@ -111,16 +111,55 @@ export default function PersistentDrawerLeft(props) {
   };
 
   const handelDelete = (product) => {
-    console.log("azdadzadzadzadz", product._id);
-    axios
-      .delete(`/api/vapeStore/delete/${product._id}`)
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    window.location.reload();
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your Product has been deleted.',
+          'success',
+          location.reload()
+        )
+        axios
+        .delete(`/api/vapeStore/delete/${product._id}`)
+        .then((result) => {
+          console.log(result);
+          console.log(result.statusText);
+     
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+        
+        
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your product is safe :)',
+          'error'
+        )
+      }
+    })
+    
+   
   };
   const getData = (data) => {
     setState({ uptodate: data }), setState({ id: data._id });
@@ -190,14 +229,7 @@ export default function PersistentDrawerLeft(props) {
                 </ListItem>
               </List>
               <Divider />
-              <List>
-                {["All mail", "Trash", "Spam"].map((text, index) => (
-                  <ListItem button key={text}>
-                    <ListItemIcon>{index}</ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItem>
-                ))}
-              </List>
+           
             </Drawer>
             <main
               className={clsx(classes.content, {

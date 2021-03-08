@@ -12,7 +12,7 @@ import axios from "axios";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-
+import Swal from 'sweetalert2'
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -117,17 +117,46 @@ export default function SignUp() {
       }
       console.log(state.uptodate)
   };
+  
   const handleSubmit = () => {
       console.log(state);
     axios
       .post("/api/vapeStore/add", state.uptodate)
       .then((response) => {
-        alert("prod added");
+         
+let timerInterval
+Swal.fire({
+  title: 'Product Added',
+  html: 'Check the user list ',
+  timer: 2000,
+  timerProgressBar: true,
+  didOpen: () => {
+    Swal.showLoading()
+    timerInterval = setInterval(() => {
+      const content = Swal.getContent()
+      if (content) {
+        const b = content.querySelector('b')
+        if (b) {
+          b.textContent = Swal.getTimerLeft()
+        }
+      }
+    }, 100)
+  },
+  willClose: () => {
+    clearInterval(timerInterval)
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer')
+  }
+})
+     window.location.reload()  
       })
       .catch((error) => {
         alert("error");
       });
-    window.location.reload();
+    
   };
   return (
     <Container component="main" maxWidth="xs">
@@ -200,7 +229,6 @@ export default function SignUp() {
             </Grid>
           </Grid>
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
