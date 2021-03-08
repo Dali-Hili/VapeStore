@@ -15,7 +15,8 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 // import MenuIcon from '@material-ui/icons/Menu';
 import Navbarprod from "../navbar/navbarprod.jsx"
-
+import Swal from 'sweetalert2';
+import $ from "jquery";
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -52,7 +53,7 @@ const addTopanie = (product) =>{
   }
 
 }
-
+      
 
   return (
     <div className="card">
@@ -77,6 +78,10 @@ const addTopanie = (product) =>{
               </Button>
               <Button size="small" color="primary" onClick={()=>{
                  addTopanie(product)
+                 Swal.fire({text: "Order has been passed! Please confirm it through the shopping cart"}).then(function(){ 
+                  location.reload();
+                  })
+                 
                }}>
                 order now!!!!!!
               </Button>
